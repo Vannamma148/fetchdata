@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin: 1rem;
+        }
+
+        .card {
+            border: 1px solid rgb(255, 230, 0);
+            padding: 1rem;
+            width: 300px;
+        }
+
+        .button {
+
+            display: grid;
+            justify-items: center;
+            align-content: center;
+        }
+
+        button {
+            padding: 1rem;
+            margin: 1rem;
+        }
+
+        h4 {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="get()">click</button>
+    <div id="cards"></div>
+    <script>
+
+   function get(){
+    fetch('https://jsonplaceholder.typicode.com/photos')
+            .then(res => res.json())
+            .then(data => record(data));
+   }
+
+        let flag = 0;
+        function record(employe) {
+            if (flag === 0) {
+                let cards = document.getElementById('cards');
+                employe.forEach(emp => {
+                    let card = document.createElement('div');
+                    card.setAttribute('class', 'card');
+                    cards.appendChild(card);
+
+                    card.innerHTML = `${emp.id} <p>${emp.title}</p>
+                    <p>${emp.body}</p>`;
+                })
+                flag = 1;
+            }
+
+            else {
+                div.innerHTML = '';
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin: 1rem;
+        }
+        .card{
+            border: 1px solid rgb(255, 230, 0);
+            padding: 1rem;
+            width: 300px;
+        }
+        .button{
+           
+            display: grid;
+            justify-items: center;
+            align-content: center;
+        }
+        button{
+            padding: 1rem;
+            margin: 1rem;
+        }
+        h4{
+            color:orange;
+        }
+    </style>
+</head>
+
+<body>
+   <div class="button"> <button onclick="records(employee)">Get Employee Data</button></div>
+
+    <div id="cards"></div>
+    <script>
+        const employee = [
+            { id: 101, name: "Alice Johnson", designation: "Software Engineer", salary: 75000 },
+            { id: 102, name: "Bob Smith", designation: "Product Manager", salary: 90000 },
+            { id: 103, name: "Charlie Lee", designation: "UI/UX Designer", salary: 68000 },
+            { id: 104, name: "Diana Adams", designation: "QA Analyst", salary: 62000 },
+            { id: 105, name: "Ethan Brown", designation: "DevOps Engineer", salary: 80000 },
+            { id: 106, name: "Fiona Carter", designation: "HR Manager", salary: 70000 },
+            { id: 107, name: "George White", designation: "Technical Lead", salary: 95000 },
+            { id: 108, name: "Hannah Green", designation: "Business Analyst", salary: 72000 },
+            { id: 109, name: "Ian Black", designation: "System Administrator", salary: 68000 },
+            { id: 110, name: "Jill Brooks", designation: "Content Strategist", salary: 65000 },
+            { id: 111, name: "Kevin Hall", designation: "Frontend Developer", salary: 74000 },
+            { id: 112, name: "Laura Evans", designation: "Backend Developer", salary: 76000 },
+            { id: 113, name: "Mike Turner", designation: "Cloud Architect", salary: 98000 },
+            { id: 114, name: "Nina Scott", designation: "Scrum Master", salary: 81000 },
+            { id: 115, name: "Oscar Young", designation: "Database Administrator", salary: 83000 },
+            { id: 116, name: "Paula Reed", designation: "Technical Writer", salary: 60000 },
+            { id: 117, name: "Quincy Bell", designation: "Support Engineer", salary: 58000 },
+            { id: 118, name: "Rachel King", designation: "Security Analyst", salary: 85000 },
+            { id: 119, name: "Sam Walker", designation: "Machine Learning Engineer", salary: 97000 },
+            { id: 120, name: "Tina Lewis", designation: "AI Researcher", salary: 100000 },
+            { id: 121, name: "Uma Nelson", designation: "Mobile App Developer", salary: 73000 },
+            { id: 122, name: "Victor Grant", designation: "Game Developer", salary: 76000 },
+            { id: 123, name: "Wendy Cooper", designation: "SEO Specialist", salary: 62000 },
+            { id: 124, name: "Xavier Harris", designation: "Network Engineer", salary: 71000 },
+            { id: 125, name: "Yvonne Morgan", designation: "Data Analyst", salary: 78000 }
+        ];
+
+       
+        let flag = 0;
+        function records(employee) {
+            if (flag === 0) {
+                let cards = document.getElementById('cards');
+                // cards.style.display = 'flex';
+                employee.slice(0, 25).forEach(emp => {
+                    let div = document.createElement('div');
+                    div.setAttribute('class', 'card');
+                    cards.appendChild(div);
+                    div.innerHTML = `<h4>Empoyees Data</h4>
+                    <p> ID: ${emp.id} </p>
+                    <p> Name:${emp.name}</p>
+                    <p> Designation:${emp.designation}</p>
+                    <p> Salary:${emp.salary}</p>
+
+                    `
+
+                })
+                flag = 1;
+
+            }
+            else {
+                let cards = document.getElementById('cards');
+                cards.innerHTML = "";
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>
